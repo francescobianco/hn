@@ -13,6 +13,8 @@ I know my behaviour hasn't been good:
 
 I'd like to start over and take part in HN the way it's meant to be used: mostly commenting where I have real experience (C, Linux, shell, developer tools), and very rarely submitting my own work, only as a proper Show HN.
 
+For transparency: I also have, or may have registered, a second account called yafb. I won't use it until I hear from you, and never to vote on or defend my own posts.
+
 Could you tell me:
 
 1. Whether the account or any of the domains above is banned or rate-limited?

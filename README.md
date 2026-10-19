@@ -10,4 +10,4 @@ Non pubblica, non vota e non genera commenti: quello che si scrive su HN lo scri
 ./hn.py replies           # tuoi commenti che hanno ricevuto risposte
 ```
 
-Utente diverso: `HN_USER=nome ./hn.py status`.
+Utente diverso: `HN_USER=yafb ./hn.py status` (account in [ACCOUNTS.md](ACCOUNTS.md)).

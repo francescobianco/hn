@@ -27,6 +27,13 @@ def get(url):
         return json.load(r)
 
 
+def user(name):
+    u = get(f"{API}/user/{name}.json")
+    if not u:
+        sys.exit(f"user {name} not found (or no public activity yet)")
+    return u
+
+
 def item(i):
     return get(f"{API}/item/{i}.json") or {}
 
@@ -36,13 +43,13 @@ def fmt_time(ts):
 
 
 def cmd_status(args):
-    u = get(f"{API}/user/{args.user}.json")
+    u = user(args.user)
     print(f"user     {u['id']}")
     print(f"karma    {u['karma']}")
     print(f"created  {fmt_time(u['created'])}")
     print(f"items    {len(u.get('submitted', []))}")
     os.makedirs(DATA, exist_ok=True)
-    path = os.path.join(DATA, "karma.jsonl")
+    path = os.path.join(DATA, f"karma-{args.user}.jsonl")
     history = [json.loads(l) for l in open(path)] if os.path.exists(path) else []
     if history:
         last = history[-1]
@@ -52,7 +59,7 @@ def cmd_status(args):
 
 
 def cmd_audit(args):
-    u = get(f"{API}/user/{args.user}.json")
+    u = user(args.user)
     ids = u.get("submitted", [])[: args.limit]
     with ThreadPoolExecutor(16) as ex:
         items = [i for i in ex.map(item, ids) if i]
